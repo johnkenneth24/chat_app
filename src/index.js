@@ -29,6 +29,11 @@ io.on('connection', (socket) => {
 
 	})
 
+	socket.on('sendLocation', (coords) => {
+		io.emit('message', `Location: ${coords.latitude}, ${coords.longitude}`)
+
+	})
+
 	socket.on('disconnect', () => {
 		io.emit('message', 'A user has left!')
 	})
@@ -40,5 +45,5 @@ io.on('connection', (socket) => {
 
 
 server.listen(port, () => {
-   console.log('Server is up on port ${port}!')
+   console.log(`Server is up on port ${port}!`)
 })
